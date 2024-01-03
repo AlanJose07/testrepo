@@ -1,0 +1,17 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  tail:
+    name: tail
+    type: string
+    description: get tail
+    default: ""
+    required: false
+extends:
+  widget: standard/search/SearchButton
+  components:
+  - php
+  - js

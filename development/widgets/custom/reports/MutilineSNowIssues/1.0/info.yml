@@ -1,0 +1,17 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  key:
+    name: key
+    type: string
+    description: keyword
+    default: ""
+    required: false
+extends:
+  widget: standard/reports/Multiline
+  components:
+  - php
+  overrideViewAndLogic: "true"

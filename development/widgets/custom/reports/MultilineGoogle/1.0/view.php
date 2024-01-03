@@ -1,0 +1,1 @@
+<div id="CO_details"></div>

@@ -1,0 +1,26 @@
+/**
+ * base.css: Base CSS for MultilineAnswersCustom
+ */
+.rn_MultilineAnswersCustom.rn_Multiline {
+
+}
+/**
+ * For hiding the answers
+ */
+.rn_ans_div{
+display:none;
+}
+.rn_Element3 {
+    display: none!important;
+  
+}
+.rn_ElementsHeader {
+display: none!important;
+}
+.rn_ElementsData {
+display: none!important;
+}
+
+.rn_Element2 p{
+font-size: 10pt!important;
+}

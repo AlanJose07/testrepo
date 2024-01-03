@@ -1,0 +1,37 @@
+<rn:block id="preResultList"/>
+<% if (row_num) { %>
+	<ol start='<%= start_num %>'>
+<% } else { %> 
+	<ul>
+<% } %>
+<rn:block id="topResultList"/>
+<% for (var i = 0; i < data.length; i++) {
+   %>
+
+    <rn:block id="resultListItem">
+	<li class="arrow" id=<%= (data[i][3]*1)+7 %> onclick="showHideAnswers(<%= data[i][3] %>);" >
+		<span id=<%= (data[i][3]*1000)+2 %> class='rn_Element1'><%= data[i][0] %></span>
+		<div class="rn_ans_div" id=<%= (data[i][3]*10000)+3 %>  >
+		<% if (data[i][1]) { %>
+		<span class='rn_Element2'><%= data[i][1] %></span>
+		 <div class="lines"></div>
+		<% } %>
+		<span class='rn_Element3'><%= data[i][2] %></span>
+		<% for (var j = 3; j < headers.length; j++) { %>
+		    <% if (typeof headers[j].visible === 'undefined' || headers[j].visible) { %>
+                <span class='rn_ElementsHeader'><%= ((headers[j].heading) ? headers[j].heading + ': ' : '') %></span>
+                <span class='rn_ElementsData'><%= data[i][j] %></span>
+            <% } %>
+			</div>
+			
+		<% } %>
+	</li>
+	</rn:block>
+<% } %>
+<rn:block id="bottomResultList"/>
+<% if (row_num) { %>
+	</ol>
+<% } else { %>
+	</ul>
+<% } %>
+<rn:block id="postResultList"/>

@@ -1,0 +1,29 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  label_average_wait_time:
+    name: label_average_wait_time
+    type: string
+    description: Message to be displayed for the Average Wait Time. The message may
+      contain the variable names for the Queue Position (${queue-position}), average
+      Wait Time Samples (${wait-time-samples}), Estimated Wait Time (${estimated-wait-time}),
+      Average Wait Time (${average-wait-time}).
+    default: ""
+    required: false
+  label_queue_position:
+    name: label_queue_position
+    type: string
+    description: Message to be displayed for the Queue Position Widget. The message
+      may contain the variable names for the Queue Position (${queue-position}), Estimated
+      Wait Time Samples (${wait-time-samples}), Estimated Wait Time (${estimated-wait-time}),
+      Average Wait Time (${average-wait-time}).
+    default: ""
+    required: false
+extends:
+  widget: standard/chat/ChatQueueWaitTime
+  components:
+  - php
+  - js

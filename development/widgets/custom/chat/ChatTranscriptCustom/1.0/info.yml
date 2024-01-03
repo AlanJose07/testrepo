@@ -1,0 +1,13 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+  yui:
+  - anim-scroll
+extends:
+  widget: standard/chat/ChatTranscript
+  components:
+  - view
+  - js
+  - css

@@ -1,0 +1,12 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  custom1:
+    name: custom1
+    type: string
+    description: custom1
+    default: ""
+    required: false

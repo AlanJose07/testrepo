@@ -1,0 +1,18 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  report_id:
+    name: report_id
+    type: string
+    description: id of the report to be fetched
+    default: ""
+    required: false
+  id_value:
+    name: id_value
+    type: string
+    description: id of the value
+    default: ""
+    required: false

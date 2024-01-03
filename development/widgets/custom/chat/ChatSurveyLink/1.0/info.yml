@@ -1,0 +1,12 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  add_param:
+    name: add_param
+    type: string
+    description: add_param
+    default: ""
+    required: false

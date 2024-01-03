@@ -1,0 +1,17 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  tail:
+    name: tail
+    type: string
+    description: Passing Tail
+    default: ""
+    required: false
+extends:
+  widget: standard/knowledgebase/GuidedAssistant
+  components:
+  - php
+  - js

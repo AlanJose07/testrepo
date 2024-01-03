@@ -1,0 +1,17 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  placeholder:
+    name: placeholder
+    type: string
+    description: Placeholder
+    default: ""
+    required: false
+extends:
+  widget: standard/input/TextInput
+  components:
+  - php
+  - js

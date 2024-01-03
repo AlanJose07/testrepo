@@ -1,0 +1,1 @@
+<div id="SNow_details"></div>
