@@ -11,6 +11,8 @@ git remote add origin url
 
 git ls-filess
 
+q - exit log
+
 touch filename
 
 FR
