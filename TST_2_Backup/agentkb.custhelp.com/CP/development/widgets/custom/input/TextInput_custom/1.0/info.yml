@@ -1,0 +1,19 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  showna:
+    name: showna
+    type: boolean
+    description: true shows the n/a check box in the label
+    default: false
+    required: false
+extends:
+  widget: standard/input/TextInput
+  components:
+  - php
+  - view
+  - js
+  - css

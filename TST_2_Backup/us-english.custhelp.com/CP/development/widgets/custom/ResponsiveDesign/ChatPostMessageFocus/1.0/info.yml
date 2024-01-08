@@ -1,0 +1,12 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+  yui:
+  - event-valuechange
+  - event-key
+extends:
+  widget: standard/chat/ChatPostMessage
+  components:
+  - js

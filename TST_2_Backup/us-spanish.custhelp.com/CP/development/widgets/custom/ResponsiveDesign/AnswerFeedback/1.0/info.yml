@@ -1,0 +1,26 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  submit_feedback_ajax:
+    name: submit_feedback_ajax
+    type: ajax
+    description: Punto final para realizar la solicitud AJAX de comentarios de respuesta
+      a
+    default: /ci/ajaxRequest/submitAnswerFeedback
+    required: false
+  submit_rating_ajax:
+    name: submit_rating_ajax
+    type: ajax
+    description: "Punto final para realizar la solicitud AJAX de calificaci\xF3n de
+      respuesta a"
+    default: /ci/ajaxRequest/submitAnswerRating
+    required: false
+extends:
+  widget: standard/feedback/AnswerFeedback
+  components:
+  - php
+  - css
+  overrideViewAndLogic: "true"

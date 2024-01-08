@@ -1,0 +1,61 @@
+_tvcRequired: function(type,args)
+		{	
+		
+			var mem_id = args[0].data;
+			var req_eng="is required";
+			var req_fre="est requis";
+			var req_spa="es requerido";	
+			
+				if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_vc_eng")
+				{	//alert("vc eng123");
+					if(mem_id==49)//Member Type = Customer English
+					{	alert("Customer English");
+						this._makeRequired("Would you like to transfer the credit of your recent order to your new Coach?",true,req_eng);
+						alert("Customer English2");
+					}
+					if(mem_id==50)//Member Type = Coach English
+					{	alert("Coach English");
+						this._makeFalse("Transfer Volume and Commission of the customer order",false);
+					}
+					else
+					{
+						this._resetAttrs();
+						
+					}	
+				}
+				
+				else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_vc_fre")
+				{
+					if(mem_id==756)//Member Type = Customer French
+					{	
+						this._makeRequired("Voudriez-vous transférer le crédit de votre commande récente à votre nouveau coach?",true,req_fre);
+					}
+					else if(mem_id==755)//Member Type = Coach French
+					{	
+						this._makeFalse("Transférez le volume et la commission de la commande du client",false);
+					}
+					else
+					{
+						this._resetAttrs();
+						
+					}	
+				}
+				 else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_vc_spa")
+				{
+					if(mem_id==758)//Member Type = Customer Spanish
+					{	
+						this._makeRequired("Transferir el volumen y la comisión del pedido del cliente",true,req_spa);
+					
+					}
+					else if(mem_id==757)//Member Type = Coach Spanish
+					{	
+						this._makeFalse("Transferir el volumen y la comisión del pedido del cliente",false);
+					}
+					
+					else
+					{
+						this._resetAttrs();
+						
+					}	
+				}
+			}

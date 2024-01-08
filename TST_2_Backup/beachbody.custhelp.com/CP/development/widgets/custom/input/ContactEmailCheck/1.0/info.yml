@@ -1,0 +1,62 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  loading_icon_path:
+    name: Loading Icon Path
+    type: filepath
+    description: rn:msg:FILE_PATH_IMG_DISP_SUBMITTING_FORM_LBL
+    default: images/indicator.gif
+    required: false
+  event_trigger:
+    name: Event Trigger
+    type: option
+    description: Switches the javascript event trigger from onkeypress or onchange, on change still has some bugs, so be aware
+    default: onkeypress
+    required: false
+    options:
+    - onkeypress
+    - onchange
+  label_email_exists:
+    name: Email Exists Label
+    type: string
+    description: Label to display if the email entered on page exists
+    default: Welcome back!  Please fill out the rest of this form to submit your message. 
+    required: false
+  label_email_notexists:
+    name: Email Not Exists Label
+    type: string
+    description: Label to display if the email entered on page does not exist
+    default: Please fill in additional contact to submit an incident.
+    required: false
+  onkeyup_timeout:
+    name: OnKeyUp Timeout
+    type: int
+    description: The amount of time after a user stops typing that the check email event will trigger.
+    default: 750
+    required: false
+  loading_icon_path:
+    name: loading_icon_path
+    type: filepath
+    description: rn:msg:FILE_PATH_IMG_DISP_SUBMITTING_FORM_LBL
+    default: images/indicator.gif
+    required: false
+  show_first_last_name:
+    name: Show First Last Name
+    type: boolean
+    description: Option to show first and last name of the contact if the contact exists when email is entered
+    default: true
+    required: false
+info:
+  description: This widget allows a user to enter their email address which is then
+    checked against the contact database and, based on the result, to populate contact's
+    first and last name fields.
+extends:
+  widget: standard/input/TextInput
+  components:
+  - php
+  - view
+  - js
+  - css

@@ -1,0 +1,20 @@
+/**
+ * base.css: Base CSS for ShippingDateSelectionInput
+ */
+.rn_ShippingDateSelectionInput .rn_SelectionInput {
+
+}
+
+
+.rn_Shipping_Date
+{
+width : 235px;
+
+}
+
+
+.rn_ShippingDateSelectionInput .rn_ShippingDateInput
+{
+
+margin-top:23px;
+}

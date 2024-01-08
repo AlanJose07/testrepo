@@ -1,0 +1,25 @@
+<?php
+namespace Custom\Widgets\ResponsiveDesign;
+
+class TextInput extends \RightNow\Widgets\TextInput {
+    function __construct($attrs) {
+        parent::__construct($attrs);
+    }
+
+    function getData() {
+
+        $this->data['js']['isloggedin'] = "loggedout";
+		if (\RightNow\Utils\Framework::isLoggedIn())
+		{
+		$this->data['js']['isloggedin']= "loggedin";
+		}
+        return parent::getData();
+
+    }
+
+    /**
+     * Overridable methods from TextInput:
+     */
+    // public function outputConstraints()
+    // protected function determineDisplayType($fieldName, $dataType, $constraints)
+}

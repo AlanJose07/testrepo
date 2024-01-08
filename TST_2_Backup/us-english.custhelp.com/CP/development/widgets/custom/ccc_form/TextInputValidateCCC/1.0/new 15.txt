@@ -1,0 +1,24 @@
+else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_cust_name")
+		{
+			
+			if(memb_id == 50)//Member Type = Coach English
+			{	
+				this._makeRequired("Customer Full Name",true,req_eng);
+				
+			}
+			else if(memb_id == 755)//Member Type = Coach French
+			{	
+				this._makeRequired("Nom complet du Client ",true,req_fre);
+			}
+			else if(memb_id == 757)//Member Type = Coach Spanish
+			{	this._makeRequired("Nombre completo del cliente",true,req_spa);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+			
+			
+		}

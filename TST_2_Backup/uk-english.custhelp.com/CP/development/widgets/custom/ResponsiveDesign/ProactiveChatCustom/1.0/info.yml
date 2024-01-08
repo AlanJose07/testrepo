@@ -1,0 +1,14 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+  yui:
+  - cookie
+extends:
+  widget: standard/chat/ProactiveChat
+  components:
+  - php
+  - view
+  - js
+  - css

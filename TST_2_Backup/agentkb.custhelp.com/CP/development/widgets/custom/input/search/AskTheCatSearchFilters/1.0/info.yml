@@ -1,0 +1,19 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  default_ajax_endpoint:
+    name: default_ajax_endpoint
+    type: ajax
+    description: Default AJAX endpoint
+    default: /ci/ajax/widget
+    required: false
+  report_id:
+    name: report_id
+    type: string
+    description: report id of the mentioned report to which the filters needs to be
+      passed
+    default: ""
+    required: false

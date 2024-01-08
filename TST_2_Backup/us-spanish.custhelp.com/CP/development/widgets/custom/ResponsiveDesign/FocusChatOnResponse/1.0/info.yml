@@ -1,0 +1,12 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  title:
+    name: title
+    type: string
+    description: Text to be displayed when agent responds
+    default: ""
+    required: false

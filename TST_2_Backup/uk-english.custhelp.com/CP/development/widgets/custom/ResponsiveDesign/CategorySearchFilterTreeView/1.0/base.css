@@ -1,0 +1,66 @@
+/**
+ * base.css: Base CSS for CategorySearchFilterTreeView
+ */
+.rn_CategorySearchFilterTreeView.rn_ProductCategorySearchFilter {
+
+}
+
+.rn_CategorySearchFilterTreeView.rn_ProductCategorySearchFilter button.rn_DisplayButton {
+    background:none;
+    color:#000;
+    cursor:pointer;
+    font-weight:normal;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -moz-border-radius:0;
+    -webkit-border-radius:0;
+    border-radius:0;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    z-index:0 !important;
+}
+/*Fix IE6/7 problem displaying tables within overlays*/
+.rn_CategorySearchFilterTreeView.rn_ProductCategorySearchFilter .yui-overlay-hidden .rn_Panel table {
+    *border-collapse:separate;
+}
+.rn_CategorySearchFilterTreeView.rn_ProductCategorySearchFilter .ygtvrow {
+    cursor:pointer;
+}
+.rn_CategorySearchFilterTreeView.rn_ProductCategorySearchFilter .ygtvspacer {
+    width:1em;
+    display:block;
+}
+/* make the text label font relative*/
+.rn_CategorySearchFilterTreeView.rn_ProductCategorySearchFilter .ygtvlabel,
+.rn_CategorySearchFilterTreeView.rn_ProductCategorySearchFilter .ygtvlabel:link,
+.rn_CategorySearchFilterTreeView.rn_ProductCategorySearchFilter .ygtvlabel:visited,
+.rn_CategorySearchFilterTreeView.rn_ProductCategorySearchFilter .ygtvlabel:hover {
+    font-size:inherit;
+}
+.rn_CategorySearchFilterTreeView.rn_ProductCategorySearchFilter .rn_PanelContainer .yui3-widget-hd {
+    display: none;
+}
+
+.rn_ProductCategorySearchFilter button.rn_DisplayButton {
+    background: #FFF url(/euf/assets/themes/standard/images/splitButtonArrow.png) no-repeat scroll right center;
+    border: 1px solid #B1B1B1;
+        border-top-color: rgb(177, 177, 177);
+        border-right-color: rgb(177, 177, 177);
+        border-bottom-color: rgb(177, 177, 177);
+        border-left-color: rgb(177, 177, 177);
+    min-height: 1.5em;
+    min-width: 250px;
+    padding: 4px 20px 4px 4px;
+        padding-left: 4px;
+    position: relative;
+    text-align: left;
+    text-shadow: none;
+}
+.rn_ProductCategorySearchFilter .rn_Label {
+    color: #333333;
+    float: left;
+    font-weight: bold;
+    width: 38%;
+}
+

@@ -1,0 +1,29 @@
+﻿
+
+.message {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background: #CFD8DC;
+  transition: 400ms;
+  font-size:1.15em;
+  position: fixed;
+    left: 0;
+    bottom: 0;
+	z-index:1000;
+	color: red;
+}
+
+.close {
+  opacity: 0;
+}
+
+.message-text {
+  flex: 1;
+}
+
+.message-close {
+  font-size: 0;
+  cursor: pointer;
+}

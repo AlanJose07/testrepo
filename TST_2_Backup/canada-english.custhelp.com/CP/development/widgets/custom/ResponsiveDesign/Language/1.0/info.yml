@@ -1,0 +1,19 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  interface:
+    name: interface
+    type: int
+    description: This attribute will specify the interface name, that is US, CANADA
+      or UK. Depending on the interface, the widget will display the language
+    default: ~
+    required: true
+extends:
+  widget: standard/input/SelectionInput
+  components:
+  - php
+  - view
+  - js

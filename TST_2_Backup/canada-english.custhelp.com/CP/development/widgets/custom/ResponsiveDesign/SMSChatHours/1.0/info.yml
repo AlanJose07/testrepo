@@ -1,0 +1,23 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  label_chat_hours:
+    name: label_chat_hours
+    type: string
+    description: Message to display above chat hour listing
+    default: Chat hours are listed below.
+    required: false
+  page:
+    name: page
+    type: int
+    description: To distinguish the page
+    default: ~
+    required: false
+extends:
+  widget: standard/chat/ChatHours
+  components:
+  - php
+  overrideViewAndLogic: "true"

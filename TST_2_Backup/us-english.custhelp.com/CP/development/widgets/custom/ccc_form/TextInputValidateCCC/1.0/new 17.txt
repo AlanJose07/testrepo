@@ -1,0 +1,22 @@
+else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_vc_eng")
+		{
+			if(memb_id==49)//Member Type = Customer English
+			{	
+				this._makeRequired("Would you like to transfer the credit of your recent order to your new Coach?",true,req_eng);
+			
+			}
+			else if(memb_id == 756)//Member Type = Customer French
+			{	
+				this._makeRequired("Voudriez-vous transférer le crédit de votre commande récente à votre nouveau coach?",true,req_fre);
+			}
+			else if(memb_id == 758)//Member Type = Customer Spanish
+			{
+				this._makeRequired("¿Deseas transferir el crédito de tu pedido reciente a tu nuevo coach?",true,req_spa);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}

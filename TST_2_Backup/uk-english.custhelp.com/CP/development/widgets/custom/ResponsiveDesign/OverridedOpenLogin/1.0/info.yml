@@ -1,0 +1,12 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+  yui:
+  - panel
+extends:
+  widget: standard/login/OpenLogin
+  components:
+  - php
+  overrideViewAndLogic: "true"

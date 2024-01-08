@@ -1,0 +1,41 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+  yui:
+  - panel
+  - gallery-treeview
+attributes:
+  selection:
+    name: selection
+    type: string
+    description: include - include only this p_id  exclude - exclude all but this
+      p_id
+    default: ""
+    required: false
+  p_id:
+    name: p_id
+    type: string
+    description: p_id is the product id that should be included or excluded
+    default: ""
+    required: false
+  no_reason_label:
+    name: no_reason_label
+    type: string
+    description: Overrides the message base value for NO_VAL_LBL. Cant be null or
+      blank
+    default: ""
+    required: false
+  reason:
+    name: reason
+    type: boolean
+    description: True - this is the reason product, false - not the reason product
+    default: false
+    required: false
+extends:
+  widget: standard/input/ProductCategoryInput
+  components:
+  - php
+  - view
+  - js

@@ -1,0 +1,19 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  label_dialog_description:
+    name: label_dialog_description
+    type: string
+    description: Label to display for the dialog description
+    default: Your rating has been submitted. Use the box below to tell us how we can
+      improve this answer. For customer service requests, please click <b>Cancel</b>
+      and click on the <b>Ask a Question</b> button above.
+    required: false
+extends:
+  widget: standard/feedback/AnswerFeedback
+  components:
+  - php
+  overrideViewAndLogic: "true"
