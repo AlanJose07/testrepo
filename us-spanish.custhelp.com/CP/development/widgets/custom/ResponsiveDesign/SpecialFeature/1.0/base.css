@@ -1,0 +1,398 @@
+/**
+ * base.css: Base CSS for SpecialFeature
+ */
+.rn_SpecialFeature {
+
+}
+
+
+
+#headDataleft{
+	text-align: center;
+}
+#bodyDataleft{
+	text-align: center;
+}
+#linkDataleft{
+	text-align: center;
+}
+#imageContentleft{
+			
+		//float: center;
+		margin: auto;
+		//border: 1px solid black;	
+		height: auto;
+		width: 50%;
+		position: relative;
+		
+		//overflow: hidden;	
+		/*background-image: url("promo1.png");
+		background-size: cover;
+		background-position: center;
+		
+		*/
+		width: 50%
+}
+#textContentleft{
+		
+		//position: relative;
+		//margin: auto;
+		width: 100%;
+		//border: 1px solid black;
+}
+.thumbNailleft{
+	position: relative;
+	//border: 1px solid black;
+	text-align: justify;
+}
+#imgConleft{
+	width: 70%;
+	//max-width: 100%;
+	height: auto;
+	
+	
+}
+#linkDataleft{
+	margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+	#headDataleft{
+		margin-left: 10px;
+		text-align: left;
+	}
+	#bodyDataleft{
+		margin-left: 10px;
+		text-align: left;
+	}
+	#linkDataleft{
+		margin-left: 10px;
+		text-align: left;
+	}
+	#displayDataleft{
+	//margin-bottom: .25em;
+	font-size: 22px;
+	line-height: 1.45455;
+	font-weight: 300;
+	letter-spacing: .016em;
+	font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+	width: 100%;
+	}
+	#link1left{
+		margin-bottom: .25em;
+		font-size: 18px;
+		line-height: 1.45455;
+		font-weight: 300;
+		letter-spacing: .016em;
+		font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+	
+	}
+	#textContentleft{
+	
+		//margin-top: 40px;
+		position: relative;
+		
+		float: left;
+		left: 0%;
+		width: 40%;
+		//border: 1px solid black;
+	}
+	#imageContentleft{
+		position: relative;
+		float: left;
+		//margin-left: 140px;
+		//right: 0px;
+		width: 30%;
+		//overflow: hidden;	
+		//border: 1px solid black;
+		//background-image: url("promo.png");
+		background-size: cover;
+		background-position: center;
+		
+		height: 55%;	
+	}
+	
+	
+	
+	
+	.thumbNailleft{
+	
+		//margin: 0 auto;
+		margin-top: 100px;
+		position: relative;
+		
+		float: left;
+		width: 100%;
+		 //height: 100%;
+	}
+	#imgConleft{
+		//boder: 1px solid black;
+		//margin-top: 40px;
+	}
+		
+}
+
+#headDatacenter{
+	text-align: center;
+}
+#bodyDatacenter{
+	text-align: center;
+}
+#linkDatacenter{
+	text-align: center;
+}
+#imageContentcenter{
+			
+		//float: center;
+		margin: auto;
+		//border: 1px solid black;	
+		height: auto;
+		width: 50%;
+		position: relative;
+		
+		//overflow: hidden;	
+		/*background-image: url("promo1.png");
+		background-size: cover;
+		background-position: center;
+		
+		*/
+		width: 50%
+}
+#textContentcenter{
+		
+		//position: relative;
+		//margin: auto;
+		width: 100%;
+		//border: 1px solid black;
+}
+.thumbNailcenter{
+	position: relative;
+	//border: 1px solid black;
+	text-align: justify;
+}
+#imgConcenter{
+
+	//max-width: 100%;
+	//height: auto;
+	height: 70%;
+    width: 70%;
+	
+}
+#linkDatacenter{
+	margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+	#headDatacenter{
+		margin-left: 10px;
+		text-align: center;
+		
+	}
+	#bodyDatacenter{
+		margin-left: 10px;
+		text-align: center;
+	}
+	#linkDatacenter{
+		margin-left: 10px;
+		text-align: center;
+	}
+	#displayDatacenter{
+	//margin-bottom: .25em;
+	font-size: 22px;
+	line-height: 1.45455;
+	font-weight: 300;
+	letter-spacing: .016em;
+	font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+	width: 100%;
+	}
+	#link1center{
+		margin-bottom: .25em;
+		font-size: 18px;
+		line-height: 1.45455;
+		font-weight: 300;
+		letter-spacing: .016em;
+		font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+	
+	}
+	#textContentcenter{
+		margin: auto;
+		margin-top: 5px;
+		position: relative;
+		
+		//float: left;
+		left: 0%;
+		width: 70%;
+		//border: 1px solid black;
+	}
+	#imageContentcenter{
+		position: relative;
+		//float: left;
+		//margin-left: 140px;
+		//right: 0px;
+		width: 50%;/*30*/
+		height: auto;
+		//overflow: hidden;	
+		//border: 1px solid black;
+		//background-image: url("promo.png");
+		background-size: cover;
+		background-position: center;
+		
+		height: 55%;	
+	}
+	
+	
+	
+	
+	.thumbNailcenter{
+	
+		//margin: 0 auto;
+		margin-top: 100px;
+		position: relative;
+		
+		float: left;
+		width: 100%;
+		 //height: 100%;
+	}
+	#imgConcenter{
+		//boder: 1px solid black;
+		//margin-top: 40px;
+		//height: 100%;
+		//width: 100%;
+		height: 70%;
+		width: 70%;
+
+		margin: auto;
+	}
+		
+}
+
+
+
+#headData{
+		text-align: center;
+	}
+	#bodyData{
+		text-align: center;
+	}
+	#linkData{
+		text-align: center;
+	}
+	#imageContent{
+				
+			//float: center;
+			margin: auto;
+			//border: 1px solid black;
+			height: auto;
+			width: 50%;
+			position: relative;
+			
+			//overflow: hidden;	
+			/*background-image: url("promo1.png");
+			background-size: cover;
+			background-position: center;
+			
+			*/
+			//width: 50%
+	}
+	#textContent{
+			
+			//position: relative;
+			//margin: auto;
+			width: 100%;
+			//border: 1px solid black;
+	}
+	.thumbNail{
+		position: relative;
+		//border: 1px solid black;
+		text-align: justify;
+	}
+	#imgCon{
+	
+		//max-width: 100%;
+		height: auto;
+		width: 70%;
+		
+	}
+	#linkData{
+		margin-bottom: 10px;
+	}
+	
+	@media only screen and (min-width: 768px) {
+		#headData{
+			margin-left: 10px;
+			text-align: left;
+		}
+		#bodyData{
+			margin-left: 10px;
+			text-align: left;
+		}
+		#linkData{
+			margin-left: 10px;
+			text-align: left;
+		}
+		#displayData{
+		margin-bottom: .25em;
+		font-size: 22px;
+		line-height: 1.45455;
+		font-weight: 300;
+		letter-spacing: .016em;
+		font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+		width: 100%;
+		}
+		#link1{
+			margin-bottom: .25em;
+			font-size: 18px;
+			line-height: 1.45455;
+			font-weight: 300;
+			letter-spacing: .016em;
+			font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+		
+		}
+		#textContent{
+		
+			margin-top: 40px;
+			position: relative;
+			
+			float: left;
+			left: 1%;
+			width: 40%;
+			//border: 1px solid black;
+		}
+		#imageContent{
+			position: relative;
+			float: left;
+			margin-left: 100px;
+			//right: 0px;
+			width: 30%;
+			//overflow: hidden;	
+			//border: 1px solid black;
+			/*background-image: url("promo.png");
+			background-size: cover;
+			background-position: center;
+			
+			height: 55%;*/	
+		}
+		
+		[class*="col-"] {
+			float: left;
+			/*padding: 15px;*/
+			
+		}
+		
+		
+		.thumbNail{
+		
+			//margin: 0 auto;
+			margin-top: 100px;
+			position: relative;
+			
+			float: left;
+			width: 100%;
+			 //height: 100%;
+		}
+		#imgCon{
+			//boder: 1px solid black;
+			margin-top: 20px;
+		}
+			
+	}

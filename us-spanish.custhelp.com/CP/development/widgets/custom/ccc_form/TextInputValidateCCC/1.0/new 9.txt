@@ -1,0 +1,44 @@
+_confirm_email: function(type, args)
+	{
+		var req_eng="is req";
+		var req_fre="est requis";
+		var req_spa="es requerido";	
+		var lang_id = args[0].data;
+	
+		if(lang_id==744)//Language  =  English
+			{	
+				this._makeRequired("Confirm Email Address",true,req_eng);
+			
+			}
+		else if(memb_id == 745)//Language =  French
+			{	
+				this._makeRequired("Confirmez votre adresse email",true,req_fre);
+			}
+		else if(memb_id == 746)//Language =  Spanish
+			{
+				this._makeRequired("Confirmar el correo",true,req_spa);
+				
+			}
+		else
+			{
+				this._resetAttrs();
+				
+			}	
+	
+	},
+	
+	_makeRequired: function(label,required,labelrequired)
+	{
+			var labelnew = document.getElementById("rn_" + this.instanceID + "_" + "Label");
+			labelnew.innerHTML= label+"<span class='rn_Required'> *</span>";
+			/*this.data.attrs.required=required;*/
+			this.data.attrs.label_input=label;
+			this.data.attrs.required=required;
+			this.data.attrs.label_required=labelrequired;
+	},
+	
+	_resetAttrs: function()
+	{
+			this.input.set('value','');
+			this.data.attrs.required=false;
+	},

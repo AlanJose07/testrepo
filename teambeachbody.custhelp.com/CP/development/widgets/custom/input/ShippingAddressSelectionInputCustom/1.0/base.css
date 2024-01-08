@@ -1,0 +1,24 @@
+/**
+ * base.css: Base CSS for ShippingAddressSelectionInputCustom
+ */
+.rn_ShippingAddressSelectionInputCustom .rn_SelectionInput {
+
+
+}
+.rn_ShippingAddressSelectionInputCustom   select
+{
+width : 235px;
+
+}
+
+.rn_ShippingAddressSelectionInputCustom .rn_TextInputWide input
+{
+width : 504px !important;
+}
+
+
+.rn_ShippingAddressSelectionInputCustom .rn_TextInput_Empty
+{
+
+ width : 240px;
+}

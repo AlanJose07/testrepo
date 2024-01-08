@@ -1,0 +1,42 @@
+	else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_vc_eng")
+		{alert("vc eng");
+			if(memb_id==49)//Member Type = Customer English
+			{	
+				this._makeRequired("Would you like to transfer the credit of your recent order to your new Coach?",true,req_eng);
+			
+			}
+			
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_vc_fre")
+		{
+			if(memb_id==756)//Member Type = Customer English
+			{	
+				this._makeRequired("Voudriez-vous transférer le crédit de votre commande récente à votre nouveau coach?",true,req_eng);
+			
+			}
+			
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_vc_spa")
+		{
+			if(memb_id==758)//Member Type = Customer English
+			{	
+				this._makeRequired("Transferir el volumen y la comisión del pedido del cliente",true,req_eng);
+			
+			}
+			
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}

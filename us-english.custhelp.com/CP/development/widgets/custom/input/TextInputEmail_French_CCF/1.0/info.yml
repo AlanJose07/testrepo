@@ -1,0 +1,16 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  label_invalid:
+    name: label_invalid
+    type: string
+    description: Label to display as the requirement message
+    default: '%s is invalid'
+    required: false
+extends:
+  widget: standard/input/TextInput
+  components:
+  - js

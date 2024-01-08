@@ -1,0 +1,730 @@
+RightNow.namespace('Custom.Widgets.customercoachchange.TextInputCCC');
+Custom.Widgets.customercoachchange.TextInputCCC = RightNow.Widgets.TextInput.extend({ 
+    /**
+     * Place all properties that intend to
+     * override those of the same name in
+     * the parent inside `overrides`.
+     */
+    overrides: {
+        /**
+         * Overrides RightNow.Widgets.TextInput#constructor.
+         */
+        constructor: function(data, instanceID) {
+            // Call into parent's constructor
+            this.parent();
+			this.instanceID = instanceID;
+			this.data = data;
+			var fieldName = data.js.name;
+	
+			//RightNow.Event.subscribe("evt_languagechanged", this._set_label, this)
+			
+			if(RightNow.Event.subscribe("evt_languagechanged", this._set_required_attribute, this))
+			{
+	
+				if(fieldName == "Incident.CustomFields.c.ccc_requestor_name"||fieldName == "Incident.CustomFields.c.coachcustomernumber"||fieldName == "Contact.Emails.PRIMARY.Address"||"Incident.CustomFields.c.ccc_transfer_cust_name")
+				{
+					
+					this._resetAttrs();
+				}
+				
+			}
+				
+				
+			this._inputField = document.getElementById("rn_" + this.instanceID + "_" + this.data.js.name);
+			window.life=0;
+			
+			if(fieldName == "Incident.CustomFields.c.ccc_requestor_name"||fieldName == "Incident.CustomFields.c.coachcustomernumber"||fieldName == "Contact.Emails.PRIMARY.Address"||"Incident.CustomFields.c.ccc_transfer_cust_name") //
+				{	
+					this._inputField = document.getElementById("rn_" + this.instanceID + "_" + this.data.js.name); 
+					RightNow.Event.subscribe("evt_memberType_Changed", this._set_required_attribute, this);
+
+				}
+			if(fieldName  == "Incident.CustomFields.c.ccc_transfer_coach_email")
+				{
+						this.input.on("blur", this._CoachEmailCheck, this);
+						RightNow.Event.subscribe("evt_memberType_Changed", this._set_required_attribute, this);
+				}
+			
+	
+	
+	
+        },
+		onValidate: function(type, args)
+		{
+			if(this.data.js.name  == "Incident.CustomFields.c.ccc_transfer_coach_email")
+			{
+				var eventObject = this.createEventObject(),
+				errors = [];
+				this.toggleErrorIndicator(false);
+				var valid = true;
+				
+				if (this.input.get('value')== "") 
+				{
+					valid = 0;
+				}
+				else 
+				{
+				
+					var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+					if (this.input.get('value').match(mailformat)) 
+					{
+						valid = 2;
+					}
+					else 
+					{
+						valid = 1;
+					}
+				}
+				
+				if(!this.validate(errors) || (this.data.attrs.require_validation && !this._validateVerifyField(errors)) || !this._compareInputToMask(true) || (valid==0)||(valid==1)) 
+				{		
+					if(valid==1)
+					{
+						errors = ['is invalid'];
+						this.lastErrorLocation = args[0].data.error_location;
+						this._displayError(errors, this.lastErrorLocation);
+						RightNow.Event.fire("evt_formFieldValidateFailure", eventObject);
+					}
+					else
+					{
+						this.lastErrorLocation = args[0].data.error_location;
+						this._displayError(errors, this.lastErrorLocation);
+						RightNow.Event.fire("evt_formFieldValidateFailure", eventObject);
+					}
+					return false;
+				}
+				
+				RightNow.Event.fire("evt_formFieldValidatePass", eventObject);
+				return eventObject;
+				
+				
+				
+				
+			}
+			else
+			{
+			
+				var eventObject = this.createEventObject(),
+					errors = [];
+		
+				this.toggleErrorIndicator(false);
+		
+				if(!this.validate(errors) || (this.data.attrs.require_validation && !this._validateVerifyField(errors)) || !this._compareInputToMask(true)) {
+					this.lastErrorLocation = args[0].data.error_location;
+					this._displayError(errors, this.lastErrorLocation);
+					RightNow.Event.fire("evt_formFieldValidateFailure", eventObject);
+					return false;
+				}
+		
+				RightNow.Event.fire("evt_formFieldValidatePass", eventObject);
+				return eventObject;
+			}
+    
+		}
+
+        /**
+         * Overridable methods from TextInput:
+         *
+         * Call `this.parent()` inside of function bodies
+         * (with expected parameters) to call the parent
+         * method being overridden.
+         */
+        // swapLabel: function(container, requiredness, label, template)
+        // constraintChange: function(evt, constraint)
+        // getVerificationValue: function()
+        // onValidate: function(type, args)
+        // _displayError: function(errors, errorLocation)
+        // toggleErrorIndicator: function(showOrHide, fieldToHighlight, labelToHighlight)
+        // _toggleFormSubmittingFlag: function(event)
+        // _blurValidate: function(event, validateVerifyField)
+        // _validateVerifyField: function(errors)
+        // _checkExistingAccount: function()
+        // _massageValueForModificationCheck: function(value)
+        // _onAccountExistsResponse: function(response, originalEventObject)
+        // onProvinceChange: function(type, args)
+        // _initializeMask: function()
+        // _createMaskArray: function(mask)
+        // _getSimpleMaskString: function()
+        // _compareInputToMask: function(submitting)
+        // _showMaskMessage: function(error)
+        // _setMaskMessage: function(message)
+        // _showMask: function()
+        // _hideMaskMessage: function()
+        // _onValidateFailure: function()
+    },
+	
+	_CoachEmailCheck: function() {
+	
+var coachemailID = this.input.get('value');
+
+var value=coachemailID;
+
+if(value!='')
+{
+var eventObject = new RightNow.Event.EventObject(this, {data:  value});		
+}
+else
+{
+eventObject='0';	
+}
+RightNow.Event.fire("evt_coach_email_attribute_ccc",eventObject);
+	
+},
+	_set_required_attribute: function(type, args)
+	{	
+		var req_eng="is required";
+		var req_fre="est requis";
+		var req_spa="es requerido";
+		var memb_id = args[0].data;
+		
+		if(this.data.js.name == "Incident.CustomFields.c.ccc_requestor_name")
+		{
+			if(memb_id == 50)//Member Type = Coach English
+			{	
+				this._makeRequired("Full Name",true,req_eng);
+							
+			}
+			else if(memb_id == 755)//Member Type = Coach French
+			{	//alert("Coach French");
+				this._makeRequired("Nom complet",true,req_fre);
+				//alert("234");
+				
+			}
+			else if(memb_id == 757)//Member Type = Coach Spanish
+			{	//alert("Coach spa");
+				this._makeRequired("Nombre completo",true,req_spa);
+			}
+			else if(memb_id == 49)//Member Type = Customer English
+			{	
+				this._makeRequired("Full Name",true,req_eng);
+			}
+			else if(memb_id == 756)//Member Type = Customer French
+			{	
+				this._makeRequired("Nom complet",true,req_fre);
+			}
+			else if(memb_id == 758)//Member Type = Customer Spanish
+			{	
+				this._makeRequired("Nombre complet",true,req_spa);
+			}
+			
+			else
+			{   
+				this._resetAttrs();
+			}
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.coachcustomernumber")
+		{
+			if(memb_id == 50)//Member Type = Coach English
+			{	
+				this._makeRequired("Coach ID",true,req_eng);
+				
+			}
+			else if(memb_id == 755)//Member Type = Coach French
+			{	
+				this._makeRequired("ID de Coach",true,req_fre);
+			}
+			else if(memb_id == 757)//Member Type = Coach Spanish
+			{	
+				this._makeRequired("Identificación de coach",true,req_spa);
+				
+			}
+			else if(memb_id == 49)//Member Type = Customer English
+			{	
+				this._makeFalse("Customer ID",false);
+			}
+			else if(memb_id == 756)//Member Type = Customer French
+			{	
+				this._makeFalse(" Numéro de client",false);
+			}
+			else if(memb_id == 758)//Member Type = Customer Spanish
+			{	
+				this._makeFalse("Identificación de cliente",false);
+			}
+			else
+			{	
+				this._resetAttrs();
+				
+			}	
+		}
+		 else if(this.data.js.name == "Contact.Emails.PRIMARY.Address")
+		{
+			if(memb_id == 50)//Member Type = Coach English
+			{	
+			
+				this._makeRequired("Email Address",true,req_eng);
+				
+			}
+			else if(memb_id == 755)//Member Type = Coach French
+			{	
+				this._makeRequired("Adresse courriel",true,req_fre);
+				
+			}
+			else if(memb_id == 757)//Member Type = Coach Spanish
+			{	
+				this._makeRequired("Dirección de correo electrónico",true,req_spa);
+				
+			}
+			else if(memb_id == 49)//Member Type = Customer English
+			{	
+				this._makeRequired("Email Address",true,req_eng);
+			}
+			else if(memb_id == 756)//Member Type = Customer French
+			{	
+				this._makeRequired(" Adresse courriel",true,req_fre);
+			}
+			else if(memb_id == 758)//Member Type = Customer Spanish
+			{	
+				this._makeRequired(" Dirección de correo electrónico",true,req_spa);
+			}
+			
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		 else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_cust_name")
+		{
+			if(memb_id == 50)//Member Type = Coach English
+			{	
+				this._makeRequired("Customer Full Name",true,req_eng);
+				
+			}
+			else if(memb_id == 755)//Member Type = Coach French
+			{	
+				this._makeRequired("Nom complet du Client",true,req_fre);
+				
+			}
+			else if(memb_id == 757)//Member Type = Coach Spanish
+			{	this._makeRequired("Nombre completo del cliente",true,req_spa);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		 else if(this.data.js.name == "Incident.CustomFields.c.ccc_requestor_phone")
+		{
+			if(memb_id == 50)//Member Type = Coach English
+			{	
+				this._makeFalse("Telephone Number",false);
+				
+			}
+			else if(memb_id == 755)//Member Type = Coach French
+			{	
+				this._makeFalse("Numéro de téléphone",false);
+			}
+			else if(memb_id == 757)//Member Type = Coach Spanish
+			{	this._makeFalse("Número telefónico",false);
+				
+			}
+			else if(memb_id == 756)//Member Type = Customer French
+			{	this._makeFalse("Numéro de téléphone",false);
+				
+			}
+			
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		
+		else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_cust_name")
+		{
+			
+			if(memb_id == 50)//Member Type = Coach English
+			{	
+				this._makeRequired("Customer Full Name",true,req_eng);
+				
+			}
+			else if(memb_id == 755)//Member Type = Coach French
+			{	
+				this._makeRequired("Nom complet du Client ",true,req_fre);
+			}
+			else if(memb_id == 757)//Member Type = Coach Spanish
+			{	this._makeRequired("Nombre completo del cliente",true,req_spa);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+			
+			
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_cust_id")
+		{
+			if(memb_id == 50)//Member Type = Coach English
+			{	
+				this._makeFalse("Customer ID",false);
+			
+			}
+			else if(memb_id == 755)//Member Type = Coach French
+			{	
+				this._makeFalse("numéro d'identifiant de Client ",false);
+			}
+			else if(memb_id == 757)//Member Type = Coach Spanish
+			{	this._makeFalse("Identificación del cliente",false);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_cust_email")
+		{
+			if(memb_id == 50)//Member Type = Coach English
+			{	
+				this._makeFalse("Customer Email",false);
+			
+			}
+			else if(memb_id == 755)//Member Type = Coach French
+			{	
+				this._makeFalse("Courriel du Client ",false);
+			}
+			else if(memb_id == 757)//Member Type = Coach Spanish
+			{	this._makeFalse("Correo electrónico del cliente",false);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_cust_phone")
+		{
+			if(memb_id == 50)//Member Type = Coach English
+			{	
+				this._makeFalse("Customer Telephone Number",false);
+			
+			}
+			else if(memb_id == 755)//Member Type = Coach French
+			{	
+				this._makeFalse("Numéro de téléphone du Client ",false);
+			}
+			else if(memb_id == 757)//Member Type = Coach Spanish
+			{	this._makeFalse("Número telefónico del cliente",false);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_cust_address")
+		{
+			if(memb_id == 50)//Member Type = Coach English
+			{	
+				this._makeFalse("Customer Shipping Address",false);
+			
+			}
+			else if(memb_id == 755)//Member Type = Coach French
+			{	
+				this._makeFalse("Adresse de livraison du Client",false);
+			}
+			else if(memb_id == 757)//Member Type = Coach Spanish
+			{	this._makeFalse("Dirección de envío del cliente",false);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_orderno")
+		{
+			if(memb_id == 50)//Member Type = Coach English
+			{	
+				this._makeFalse("Enter Original Order #",false);
+			
+			}
+			else if(memb_id == 755)//Member Type = Coach French
+			{	
+				this._makeFalse("Saisissez le numéro de la commande originale",false);
+			}
+			else if(memb_id == 757)//Member Type = Coach Spanish
+			{	this._makeFalse("Ingresa el numero del pedido original",false);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.orderno")
+		{
+			if(memb_id==49)//Member Type = Customer English
+			{	
+				this._makeFalse("Your Order Number",false);
+			
+			}
+			else if(memb_id == 756)//Member Type = Customer French
+			{	
+				this._makeFalse("Votre numéro de commande",false);
+			}
+			else if(memb_id == 758)//Member Type = Customer Spanish
+			{
+				this._makeFalse("Su número de pedido",false);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.last_four_cc")
+		{
+			if(memb_id == 50)//Member Type = Coach English
+			{	
+				this._makeFalse("Enter Last 4 digits of Credit Card Used to Place Order",false);
+			
+			}
+			else if(memb_id == 755)//Member Type = Coach French
+			{	
+				this._makeFalse("Saisissez les 4 derniers chiffres de la carte de crédit utilisée pour passer la commande",false);
+			}
+			else if(memb_id == 757)//Member Type = Coach Spanish
+			{ this._makeFalse("Ingresa los últimos 4 dígitos de la tarjeta de crédito utilizada para realizar el pedido",false);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.billing_zip")
+		{
+			if(memb_id==49)//Member Type = Customer English
+			{	
+				this._makeRequired("Billing Zip Code",true,req_eng);
+			
+			}
+			else if(memb_id == 756)//Member Type = Customer French
+			{	
+				this._makeRequired("Facturation Code postal",true,req_fre);
+			}
+			
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_coach_id")
+		{
+			if(memb_id==49)//Member Type = Customer English
+			{	//alert("Coach ID#");
+				this._makeRequired("Coach ID#",true,req_eng);
+			
+			}
+			else if(memb_id == 756)//Member Type = Customer French
+			{	//alert("numéro d'identifiant du Coach");
+				this._makeRequired("numéro d'identifiant du Coach",true,req_fre);
+			}
+			else if(memb_id == 758)//Member Type = Customer Spanish
+			{//alert("Numero de identificación del coach");
+				this._makeRequired("Numero de identificación del coach",true,req_spa);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_coach_name")
+		{
+			if(memb_id==49)//Member Type = Customer English
+			{	
+				this._makeRequired("Coach Name",true,req_eng);
+			
+			}
+			else if(memb_id == 756)//Member Type = Customer French
+			{	
+				this._makeRequired("Nom du coach",true,req_fre);
+			}
+			else if(memb_id == 758)//Member Type = Customer Spanish
+			{
+				this._makeRequired("Nombre del coach",true,req_spa);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_coach_name")
+		{
+			if(memb_id==49)//Member Type = Customer English
+			{	
+				this._makeRequired("Coach Name",true,req_eng);
+			
+			}
+			else if(memb_id == 756)//Member Type = Customer French
+			{	
+				this._makeRequired("Nom du coach",true,req_fre);
+			}
+			else if(memb_id == 758)//Member Type = Customer Spanish
+			{
+				this._makeRequired("Nombre del coach",true,req_spa);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_coach_email")
+		{
+			if(memb_id==49)//Member Type = Customer English
+			{	
+				this._makeRequired("Coach Email Address",true,req_eng);
+			
+			}
+			else if(memb_id == 756)//Member Type = Customer French
+			{	
+				this._makeRequired("Adresse courriel du coach",true,req_fre);
+			}
+			else if(memb_id == 758)//Member Type = Customer Spanish
+			{
+				this._makeRequired("Correo electrónico del coach",true,req_spa);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		else if(this.data.js.name == "Incident.CustomFields.c.ccc_transfer_vc_eng")
+		{
+			if(memb_id==49)//Member Type = Customer English
+			{	
+				this._makeRequired("Would you like to transfer the credit of your recent order to your new Coach?",true,req_eng);
+			
+			}
+			else if(memb_id == 756)//Member Type = Customer French
+			{	
+				this._makeRequired("Voudriez-vous transférer le crédit de votre commande récente à votre nouveau coach?",true,req_fre);
+			}
+			else if(memb_id == 758)//Member Type = Customer Spanish
+			{
+				this._makeRequired("¿Deseas transferir el crédito de tu pedido reciente a tu nuevo coach?",true,req_spa);
+				
+			}
+			else
+			{
+				this._resetAttrs();
+				
+			}	
+		}
+		
+		
+	},
+	/*_set_label: function(type, args)
+	{	
+		
+		var lang_id = args[0].data;
+		var memb_id=document.getElementsByName("Incident.CustomFields.c.member_type")[0].value;
+		
+		if(this.data.js.name == "Incident.CustomFields.c.ccc_requestor_name")
+		{	
+			if(lang_id==744)
+			{
+				if(memb_id == 50)//Member Type = Coach English
+				{	alert("coach eng member");
+				this._labelChange("Full Name");
+							
+				}
+			}
+			
+			else if(lang_id==745)
+			{
+				if(memb_id == 755)//Member Type = Coach French
+				{	alert("coach FRE member");
+				this._labelChange("Nom complet");
+							
+				}
+		
+			}
+		
+		}
+	},*/
+	
+	
+	
+
+    /**
+     * Sample widget method.
+     */
+    methodName: function() {
+
+    },
+
+    /**
+     * Renders the `label.ejs` JavaScript template.
+     */
+    renderLabel: function() {
+        // JS view:
+        var content = new EJS({text: this.getStatic().templates.label}).render({
+            // Variables to pass to the view
+            // display: this.data.attrs.display
+        });
+    },
+
+    /**
+     * Renders the `labelValidate.ejs` JavaScript template.
+     */
+    renderLabelValidate: function() {
+        // JS view:
+        var content = new EJS({text: this.getStatic().templates.labelValidate}).render({
+            // Variables to pass to the view
+            // display: this.data.attrs.display
+        });
+    },
+	
+	_makeRequired: function(label,required,labelrequired)
+	{
+			var labelnew = document.getElementById("rn_" + this.instanceID + "_" + "Label");
+			labelnew.innerHTML= label+"<span class='rn_Required'> *</span>";
+			/*this.data.attrs.required=required;*/
+			
+			this.data.attrs.label_input=label;
+			this.data.attrs.required=required;
+			this.data.attrs.label_required=labelrequired;
+	},
+	_makeFalse: function(label,required)
+	{
+			var labelnew = document.getElementById("rn_" + this.instanceID + "_" + "Label");
+			labelnew.innerHTML= label;
+			this.data.attrs.required=required;
+	},
+	
+	_resetAttrs: function()
+	{
+			this.input.set('value','');
+			this.data.attrs.required=false;
+	},
+	_labelChange: function(label)
+	{
+			var labelnew = document.getElementById("rn_" + this.instanceID + "_" + "Label");
+			labelnew.innerHTML =label;
+	}
+	
+	
+	
+});

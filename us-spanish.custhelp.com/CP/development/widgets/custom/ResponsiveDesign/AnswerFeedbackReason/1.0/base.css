@@ -1,0 +1,50 @@
+/**
+ * base.css: Base CSS for AnswerFeedbackReason
+ */
+.rn_AnswerFeedbackReason.rn_AnswerFeedback {
+
+}
+
+.yui3-skin-sam .yui3-panel-content {
+    -webkit-box-shadow: 0 0 5px #333;
+    -moz-box-shadow: 0 0 5px #333;
+    box-shadow: 0 0 5px #333;
+    border: 1px solid black;
+    background: white;
+}
+.rn_AnswerFeedbackDialog {
+    width: 375px;
+}
+.rn_Dialog {
+    overflow: visible;
+}
+.yui3-skin-sam .yui3-panel .yui3-widget-hd {
+    padding: 8px 28px 8px 8px;
+    min-height: 13px;
+    _height: 13px;
+    color: white;
+    background: -webkit-gradient(linear,left bottom,left top,from(#2647a0),color-stop(0.07,#2647a0),color-stop(0.5,#3d67ce),to(#426fd9));
+}
+.yui3-panel .yui3-widget-hd {
+    position: relative;
+}
+.yui3-skin-sam .yui3-panel .yui3-widget-bd {
+    padding: 10px;
+}
+.rn_AnswerFeedbackForm .rn_DialogSubtitle {
+    margin-bottom: 6px;
+    text-align: left;
+}
+.yui3-skin-sam .yui3-panel .yui3-widget-ft {
+    background: #fff !important;
+}
+.yui3-skin-sam .yui3-panel .yui3-widget-ft {
+    background: #edf5ff;
+    padding: 8px;
+    text-align: right;
+}
+.yui3-panel .yui3-widget-ft .yui3-widget-buttons {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}

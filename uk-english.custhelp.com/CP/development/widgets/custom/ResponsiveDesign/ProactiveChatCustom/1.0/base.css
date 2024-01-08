@@ -1,0 +1,25 @@
+/**
+ * base.css: Base CSS for ProactiveChatCustom
+ */
+.rn_ProactiveChatCustom.rn_ProactiveChat {
+
+}
+
+.dont button {
+    color: #ff0014;
+    text-decoration: underline;
+    background: none;
+    text-shadow: none;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0 !important;
+    left: 42%;
+    font-size: 13px;
+    position: relative;
+    }
+
+.dont {
+    text-align: left !important;
+}

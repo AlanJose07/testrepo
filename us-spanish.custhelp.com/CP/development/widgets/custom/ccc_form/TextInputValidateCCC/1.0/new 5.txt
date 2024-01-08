@@ -1,0 +1,339 @@
+RightNow.namespace('Custom.Widgets.input.TextInputValidate');
+Custom.Widgets.input.TextInputValidate = RightNow.Widgets.TextInput.extend({ 
+    /**
+     * Place all properties that intend to
+     * override those of the same name in
+     * the parent inside `overrides`.
+     */
+    overrides: {
+        /**
+         * Overrides RightNow.Widgets.TextInput#constructor.
+         */
+        constructor: function() {
+			
+			
+			
+			 document.getElementById("rn_" + this.instanceID + "_" +    this.data.js.name).readOnly = true;
+   			 document.getElementById("rn_" + this.instanceID + "_" + this.data.js.name).style.backgroundColor = "#BDBDBD" ;
+           
+            this.parent();
+			
+			if(this.data.js.name  == "Contact.Emails.PRIMARY.Address")
+					{
+						RightNow.Event.subscribe("evt_email_attribute", this.emailCheck, this);
+						this.input.on("blur", this.emailCheckhere, this);
+					}
+			
+			if(this.data.js.name  == "Incident.CustomFields.c.ccc_transfer_coach_email")
+					{
+						RightNow.Event.subscribe("evt_coach_email_attribute", this.coachemailCheck, this);
+						this.input.on("blur", this.coachemailCheckhere, this);
+					}
+			 
+			
+			
+        },
+		
+		
+		
+		
+
+        /**
+         * Overridable methods from TextInput:
+         *
+         * Call `this.parent()` inside of function bodies
+         * (with expected parameters) to call the parent
+         * method being overridden.
+         */
+        // swapLabel: function(container, requiredness, label, template)
+        // constraintChange: function(evt, constraint)
+        // getVerificationValue: function()
+        // onValidate: function(type, args)
+        // _displayError: function(errors, errorLocation)
+        // toggleErrorIndicator: function(showOrHide, fieldToHighlight, labelToHighlight)
+        // _toggleFormSubmittingFlag: function(event)
+        // _blurValidate: function(event, validateVerifyField)
+        // _validateVerifyField: function(errors)
+        // _checkExistingAccount: function()
+        // _massageValueForModificationCheck: function(value)
+        // _onAccountExistsResponse: function(response, originalEventObject)
+        // onProvinceChange: function(type, args)
+        // _initializeMask: function()
+        // _createMaskArray: function(mask)
+        // _getSimpleMaskString: function()
+        // _compareInputToMask: function(submitting)
+        // _showMaskMessage: function(error)
+        // _setMaskMessage: function(message)
+        // _showMask: function()
+        // _hideMaskMessage: function()
+        // _onValidateFailure: function()
+		
+		
+		   onValidate: function(type, args) {
+			   
+			  	var flagval=parseInt(document.getElementById("email_validate").value);
+			 	alert("entered fn email");	
+			   	window.flagval=flagval;
+        		var eventObject = this.createEventObject(),
+            	errors = [];
+        		this.toggleErrorIndicator(false);
+				var valid = true;
+				
+				var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+				if (this.input.get('value').match(mailformat)) {
+					alert("1");
+					//document.getElementById("error3").innerHTML = "";
+					valid = true;
+				}
+				else if (this.input.get('value')== "") {
+					alert("2");
+					//document.getElementById("error3").innerHTML = "Please enter email ";
+					valid = false;
+			
+				}
+				else {
+					alert("3");
+					//document.getElementById("error3").innerHTML = "Please enter a valid email";
+					valid = false;
+			
+				}
+		
+		  		 if(!this.validate(errors) || (this.data.attrs.require_validation && !this._validateVerifyField(errors)) || !this._compareInputToMask(true) || flagval==1||(valid==false)) 
+		{		 alert("invalid email");
+			     if(flagval==1)
+			   {
+				   errors = ['Email addresses must match to proceed.'];
+				   this.lastErrorLocation = args[0].data.error_location;
+				   this._displayError(errors, this.lastErrorLocation);
+				   RightNow.Event.fire("evt_formFieldValidateFailure", eventObject);
+			   }
+			   else
+			   {
+					this.lastErrorLocation = args[0].data.error_location;
+					this._displayError(errors, this.lastErrorLocation);
+					RightNow.Event.fire("evt_formFieldValidateFailure", eventObject);
+			   }
+            	return false;
+        }
+
+        RightNow.Event.fire("evt_formFieldValidatePass", eventObject);
+        return eventObject;
+
+ 
+    },
+
+    _displayError: function(errors, errorLocation) {
+        var commonErrorDiv = this.Y.one("#" + errorLocation),
+            verifyField;
+
+        if(commonErrorDiv) {
+            for(var i = 0, errorString = "", message, id = this.input.get("id"); i < errors.length; i++) {
+                message = errors[i];
+                if (typeof message === "object" && message !== null && message.id && message.message) {
+                    id = verifyField = message.id;
+                    message = message.message;
+                }
+                else {
+					if(window.flagval==0)
+                    message = (message.indexOf("%s") > -1) ? RightNow.Text.sprintf(message, this.data.attrs.label_input) : this.data.attrs.label_input + " " + message;
+					else
+					message = (message.indexOf("%s") > -1) ? RightNow.Text.sprintf(message) :  message;
+					
+                }
+                errorString += "<div data-field=\"" + this._fieldName + "\"><b><a href='javascript:void(0);' onclick='document.getElementById(\"" + id +
+                    "\").focus(); return false;'>" + message + "</a></b></div> ";
+            }
+            commonErrorDiv.append(errorString);
+        }
+
+        if (!verifyField || errors.length > 1) {
+            this.toggleErrorIndicator(true);
+        }
+    },
+	
+	
+	
+	 toggleErrorIndicator: function(showOrHide, fieldToHighlight, labelToHighlight) {
+        var method = ((showOrHide) ? "addClass" : "removeClass");
+        if (fieldToHighlight && labelToHighlight) {
+            fieldToHighlight[method]("rn_ErrorField");
+            labelToHighlight[method]("rn_ErrorLabel");
+        }
+        else {
+            this.input[method]("rn_ErrorField");
+            this.Y.one(this.baseSelector + "_Label")[method]("rn_ErrorLabel");
+        }
+    }
+			   
+		
+		
+		
+		
+		
+		
+		
+    },
+
+    /**
+     * Sample widget method.
+     */
+    methodName: function() {
+
+    },
+
+
+	
+	emailCheckhere: function(type, args) {
+		
+		window.email_check = this.input.get('value');
+		  var emailID = this.input.get('value');
+		  if( window.validate_variable==emailID){
+			  
+			
+			document.getElementById("email_alert").innerHTML = "";
+				var chkbx = 	parseInt(document.getElementById("email_validate").value);
+				document.getElementById("email_validate").value = 0;
+			
+			  
+		  }else{
+			  
+			  
+			   
+			  document.getElementById("email_alert").innerHTML = "Email addresses must match to proceed.";
+			  var chkbx = 	parseInt(document.getElementById("email_validate").value);
+			  document.getElementById("email_validate").value = 1;
+			 
+		  }
+		  
+		
+
+    },
+	coachemailCheckhere: function(type, args) {
+		
+		window.email_check = this.input.get('value');
+		  var emailID = this.input.get('value');
+		  if( window.validate_variable==emailID){
+			  
+			
+			document.getElementById("email_alert").innerHTML = "";
+				var chkbx = 	parseInt(document.getElementById("email_validate").value);
+				document.getElementById("email_validate").value = 0;
+			
+			  
+		  }else{
+			  
+			  
+			   
+			  document.getElementById("email_alert").innerHTML = "Email addresses must match to proceed.";
+			  var chkbx = 	parseInt(document.getElementById("email_validate").value);
+			  document.getElementById("email_validate").value = 1;
+			 
+		  }
+		  
+		
+
+    },
+	
+	
+	
+	
+	emailCheck: function(type, args) {
+		  
+		  myVar=args[0].data;
+		  if (typeof myVar == 'undefined')
+		  {
+			 window.validate_variable='';
+		  }else
+		  {
+			window.validate_variable= myVar;
+		  }
+		 
+		   
+		  if(window.validate_variable!=""){
+			  document.getElementById("rn_" + this.instanceID + "_" +    this.data.js.name).readOnly = false;
+   			 document.getElementById("rn_" + this.instanceID + "_" + this.data.js.name).style.backgroundColor = "#FFFFFF" ;
+			  
+		  }
+		  
+		  else{
+		
+			  
+			 document.getElementById("rn_" + this.instanceID + "_" +    this.data.js.name).readOnly = true;
+   			 document.getElementById("rn_" + this.instanceID + "_" + this.data.js.name).style.backgroundColor = "#BDBDBD" ;
+			 this.input.set('value','');
+			  
+		  }
+		  
+		  if(window.email_check!=""){
+			  
+			  
+			
+			 if( window.validate_variable==window.email_check){
+			  
+			
+			document.getElementById("email_alert").innerHTML = "";
+			document.getElementById("email_validate").value = 0;
+			  
+		  }else{
+			  
+			  document.getElementById("email_validate").value = 1;
+			 
+			  
+		  }
+			  
+		  }
+		 
+		
+
+    },
+	coachemailCheck: function(type, args) {
+		  
+		  myVar=args[0].data;
+		  if (typeof myVar == 'undefined')
+		  {
+			 window.validate_variable='';
+		  }else
+		  {
+			window.validate_variable= myVar;
+		  }
+		 
+		   
+		  if(window.validate_variable!=""){
+			  document.getElementById("rn_" + this.instanceID + "_" +    this.data.js.name).readOnly = false;
+   			 document.getElementById("rn_" + this.instanceID + "_" + this.data.js.name).style.backgroundColor = "#FFFFFF" ;
+			  
+		  }
+		  
+		  else{
+		
+			  
+			 document.getElementById("rn_" + this.instanceID + "_" +    this.data.js.name).readOnly = true;
+   			 document.getElementById("rn_" + this.instanceID + "_" + this.data.js.name).style.backgroundColor = "#BDBDBD" ;
+			 this.input.set('value','');
+			  
+		  }
+		  
+		  if(window.email_check!=""){
+			  
+			  
+			
+			 if( window.validate_variable==window.email_check){
+			  
+			
+			document.getElementById("email_alert").innerHTML = "";
+			document.getElementById("email_validate").value = 0;
+			  
+		  }else{
+			  
+			  document.getElementById("email_validate").value = 1;
+			 
+			  
+		  }
+			  
+		  }
+		 
+		
+
+    }
+	
+});

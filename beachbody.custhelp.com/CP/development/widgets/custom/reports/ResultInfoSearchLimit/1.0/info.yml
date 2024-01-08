@@ -1,0 +1,23 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  max_suggested_searches:
+    name: max_suggested_searches
+    type: int
+    description: Limit the maximum number of 'Other Suggested Searches' on answer
+      search
+    default: -1
+    required: false
+info:
+  description: |-
+    This widget displays information about the results that the report returned. This information includes the total number of results, the current set of results, similar searches, spelling suggestions, or that no results were returned.
+    Plus functionality to: Limit the maximum number of 'Other Suggested Searches' on answer search
+extends:
+  widget: standard/reports/ResultInfo
+  components:
+  - view
+  - js
+  - css

@@ -1,0 +1,12 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  message:
+    name: message
+    type: string
+    description: The message bases from which the Service Alert needs to be read
+    default: ""
+    required: false

@@ -1,0 +1,38 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+  yui:
+  - anim-scroll
+attributes:
+  chat_redirection:
+    name: chat_redirection
+    type: string
+    description: Chat redirection URL
+    default: /app/chat/chat_landing
+    required: false
+  launch_height:
+    name: launch_height
+    type: int
+    description: Launch Height of the chat window
+    default: 495
+    required: false
+  launch_width:
+    name: launch_width
+    type: int
+    description: Launch Width of the chat window
+    default: 380
+    required: false
+  mobile_mode:
+    name: mobile_mode
+    type: int
+    description: Set to 1 if mobile mode is enabled
+    default: 0
+    required: false
+extends:
+  widget: standard/input/FormSubmit
+  components:
+  - php
+  - view
+  - js

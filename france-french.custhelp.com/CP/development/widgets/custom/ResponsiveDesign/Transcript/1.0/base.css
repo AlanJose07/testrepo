@@ -1,0 +1,9 @@
+/**
+ * base.css: Base CSS for Transcript
+ */
+.rn_Transcript.rn_ChatTranscript {
+
+}
+.rn_ChatAgentStatus {
+	display:none;
+}

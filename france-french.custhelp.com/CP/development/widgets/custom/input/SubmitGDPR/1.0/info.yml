@@ -1,0 +1,14 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+  yui:
+  - anim-scroll
+extends:
+  widget: standard/input/FormSubmit
+  components:
+  - php
+  - view
+  - js
+  - css

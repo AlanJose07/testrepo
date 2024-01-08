@@ -1,0 +1,19 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  language:
+    name: language
+    type: string
+    description: Displays the mask and error messages in language specified
+    default: ""
+    required: false
+extends:
+  widget: standard/input/TextInput
+  components:
+  - php
+  - view
+  - js
+  - css

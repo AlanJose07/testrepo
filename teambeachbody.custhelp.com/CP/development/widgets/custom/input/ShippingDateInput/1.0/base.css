@@ -1,0 +1,14 @@
+/**
+ * base.css: Base CSS for ShippingDateInput
+ */
+.rn_ShippingDateInput.rn_DateInput {
+
+
+
+}
+
+.rn_ShippingDateSelectionInput_Cust .rn_ShippingDateInput 
+{
+
+padding-top:20px;
+}

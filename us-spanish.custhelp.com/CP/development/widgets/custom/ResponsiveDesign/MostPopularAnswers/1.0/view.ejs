@@ -1,0 +1,41 @@
+<rn:block id="preResultList"/>
+
+<rn:block id="topResultList"/>
+<div id="num_comment">
+<h3>Most Popular Answers</h3>
+<% for (var i = 0; i < data.length; i++) { %>
+    <rn:block id="resultListItem">
+    <li>
+        <% for (var j = 0; j < 4; j++) {
+            var value = data[i][j];
+
+            if (typeof hide_columns !== 'undefined' && hide_columns.indexOf(headers[j].col_definition) !== -1) {
+                continue;
+            }
+
+            if ((typeof headers[j].visible === 'undefined' || headers[j].visible)
+                && (!hide_empty_columns || !(value === null || value === '' || value === false))) {
+                if (j < 4) {
+                    if (j === 0) { %>
+                        <div class='rn_Element<%=j+1%>'><%= value %></div>
+                    <% }
+					else if (j === 1) { %>
+						<div class='rn_Element<%=j+1%>'><%= value %></div>
+					<% }
+					else if (j === 2) { %>
+						<div class='rn_Element<%=j+1%>'><%= value %></div>
+					<% }
+                    else { %>
+                        <span class='rn_Element<%=j+1%>'>FAQ:<%= value %></span>
+                    <% }
+                }
+               
+            }
+        } %>
+    </li>
+    </rn:block>
+<% } %>
+</div>
+<rn:block id="bottomResultList"/>
+
+<rn:block id="postResultList"/>

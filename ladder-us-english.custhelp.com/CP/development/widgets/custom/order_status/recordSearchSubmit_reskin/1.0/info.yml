@@ -1,0 +1,29 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  challenge_location:
+    name: challenge_location
+    type: string
+    description: The unique ID of a &lt;div&gt; on the page where a human verification
+      challenge, such as a CAPTCHA, will be displayed. If the specified ID does not
+      exist, challenges display above the submit button. If left unspecified, the
+      challenge displays as a popup when the form is submitted.
+    default: ""
+    required: false
+  error_location:
+    name: error_location
+    type: string
+    description: The unique ID of a &lt;div&gt; on the page where any field validation
+      errors will be reported. If the ID is incorrect or left unspecified, field validation
+      errors display above the submit button.
+    default: ""
+    required: false
+extends:
+  widget: standard/input/FormSubmit
+  components:
+  - php
+  - view
+  - js

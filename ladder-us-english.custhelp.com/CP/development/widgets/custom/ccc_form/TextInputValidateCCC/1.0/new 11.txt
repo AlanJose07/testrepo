@@ -1,0 +1,82 @@
+if(this.data.js.name  == "Incident.CustomFields.c.ccc_transfer_coach_email")
+				{
+			   
+					var flagval=parseInt(document.getElementById("email_validate").value);
+					window.flagval=flagval;
+					var eventObject = this.createEventObject(),
+					errors = [];
+					this.toggleErrorIndicator(false);
+					var valid = true;
+					
+					if (this.input.get('value')== "") 
+					{
+						valid = 0;
+					}
+					else 
+					{
+					
+						var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+						if (this.input.get('value').match(mailformat)) 
+						{
+							valid = 2;
+						}
+						else 
+						{
+							valid = 1;
+						}
+					}
+					
+					if(!this.validate(errors) || (this.data.attrs.require_validation && !this._validateVerifyField(errors)) || !this._compareInputToMask(true) || flagval==1||(valid==0)||(valid==1)) 
+					{		
+						if(flagval==1)
+						{  
+							var lang_id=document.getElementsByName("Incident.CustomFields.c.ccc_language")[0].value;
+							if(lang_id==745)
+							{
+								errors = [" L'adresse email que vous saisissez doit correspondre à votre adresse email enregistrée pour continuer."];
+							}
+							else if(lang_id==746)
+							{
+								errors = ['Correo electrónico debe coincidir para proceder.'];
+							}
+							else
+							{
+								errors = ['Email addresses must match to proceed.'];
+							}
+							
+							this.lastErrorLocation = args[0].data.error_location;
+							this._displayError(errors, this.lastErrorLocation);
+							RightNow.Event.fire("evt_formFieldValidateFailure", eventObject);
+						}
+						else if(valid==1)
+						{
+							errors = ['Email address is invalid 1'];
+							this.lastErrorLocation = args[0].data.error_location;
+							this._displayError(errors, this.lastErrorLocation);
+							RightNow.Event.fire("evt_formFieldValidateFailure", eventObject);
+						}
+						else
+						{
+							this.lastErrorLocation = args[0].data.error_location;
+							this._displayError(errors, this.lastErrorLocation);
+							RightNow.Event.fire("evt_formFieldValidateFailure", eventObject);
+						}
+						
+						
+						/* else if(valid==1)
+						{
+						errors = ['Email address is invalid'];
+						this.lastErrorLocation = args[0].data.error_location;
+						this._displayError(errors, this.lastErrorLocation);
+						RightNow.Event.fire("evt_formFieldValidateFailure", eventObject);
+						}*/
+						return false;
+					}
+					
+					RightNow.Event.fire("evt_formFieldValidatePass", eventObject);
+					return eventObject;
+					
+					
+					
+					
+				}

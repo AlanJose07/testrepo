@@ -1,0 +1,19 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  interface:
+    name: interface
+    type: int
+    description: Name of the interface that is US,CANADA,UK. Specify the ID of the
+      interface
+    default: ~
+    required: true
+  page:
+    name: page
+    type: int
+    description: ID of the page where the widget is placed
+    default: ~
+    required: true

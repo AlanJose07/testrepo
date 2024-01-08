@@ -1,0 +1,65 @@
+<rn:block id="top"/>
+<% if (attrs.label_input) { %>
+	<rn:block id="preLabel"/>
+    <label for="rn_<%= instanceID %>_<%= js.name %>" id="rn_<%= instanceID %>_Label" class="rn_Label">
+    <%= attrs.label_input %>
+    <% if ((attrs.required) && !(attrs.hidden) && (attrs.editable)) { %>
+        <rn:block id="preRequired"/>
+		<rn:block id="required">
+        <span class="rn_Required"> <%= RightNow.Interface.getMessage("FIELD_REQUIRED_MARK_LBL") %></span><span class="rn_ScreenReaderOnly"> <%= RightNow.Interface.getMessage("REQUIRED_LBL") %></span>
+		</rn:block>
+        <rn:block id="postRequired"/>
+    <% } %>
+    <% if (attrs.hint) { %>
+        <span class="rn_ScreenReaderOnly"><%= attrs.hint %></span>
+    <% } %>
+    </label>
+    <rn:block id="postLabel"/>
+<% } %>
+<% if (js.displayType === 'Textarea') { %>
+	<% if (!attrs.editable) { %>
+		<span class="rn_FieldValue"><%= js.value %></span>
+	<% } %>
+	<rn:block id="preInput"/>
+	<rn:block id="input">
+		<textarea id="rn_<%= instanceID %>_<%= js.name %>" class="rn_TextArea" rows="7" cols="60" name="<%= js.name %>" <%= js.constraints %> ><%= js.value %></textarea>
+	</rn:block>
+	<rn:block id="postInput"/>
+	<% if (attrs.hint && attrs.always_show_hint) { %>
+		<rn:block id="preHint"/>
+		<span class="rn_HintText"><%= attrs.hint %></span>
+		<rn:block id="postHint"/>
+	<% } %>
+<% } else { %>
+	<% if (!attrs.editable) { %>
+		<span class="rn_FieldValue"><%= js.value %></span>
+	<% } %>
+	
+	<rn:block id="preInput"/>
+	<rn:block id="input">
+		<input type="<%= inputType%>" id="rn_<%=instanceID%>_<%=js.name%>" name="<%= js.name %>" class="rn_<%=js.displayType%>" <%=js.constraints%> <%if(js.value !== null && js.value !== '') { %> value="<%= js.value %>"<% } %> />
+	</rn:block>
+	<rn:block id="postInput"/>
+	<% if (attrs.hint && attrs.always_show_hint) { %>
+		<rn:block id="preHint"/>
+		<span class="rn_HintText"><%= attrs.hint %></span>
+		<rn:block id="postHint"/>
+	<% } %>
+	<% if (attrs.require_validation) { %>
+	<div class="rn_TextInputValidate">
+		<rn:block id="preValidateLabel"/>
+		<label for="rn_<%= instanceID %>_<%= js.name %>_Validate" id="rn_<%= instanceID %>_<%= js.name %>_LabelValidate" class="rn_Label">Re-enter <%= attrs.label_input %>
+		<rn:block id="postValidateLabel"/>
+		<% if (attrs.required) { %>
+			<rn:block id="preValidateRequired"/>
+			<span class="rn_Required"><%= RightNow.Interface.getMessage("FIELD_REQUIRED_MARK_LBL") %></span><span class="rn_ScreenReaderOnly"> <%= RightNow.Interface.getMessage("REQUIRED_LBL") %></span>
+			<rn:block id="postValidateRequired"/>
+		<% } %>
+		</label>
+		<rn:block id="preValidateInput"/>
+		<input type="<%= inputType %>" id="rn_<%= instanceID %>_<%= js.name %>_Validate" name="<%= js.name %>_Validation" class="rn_<%=js.displayType%> rn_Validation" <%= js.constraints %> value="<%= js.value %>"/>
+		<rn:block id="postValidateInput"/>
+	</div>
+	<% } %>
+<% } %>
+<rn:block id="bottom"/>

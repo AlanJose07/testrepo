@@ -1,0 +1,20 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  interface:
+    name: interface
+    type: int
+    description: This attribute specify the interface. This is used to tell in which
+      interface should the category will display.
+    default: ~
+    required: true
+  page:
+    name: page
+    type: int
+    description: This attribute specify the page in the customer portal. This is used
+      to tell in which page should the category will display.
+    default: ~
+    required: true

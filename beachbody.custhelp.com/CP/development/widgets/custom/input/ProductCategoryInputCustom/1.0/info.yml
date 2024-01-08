@@ -1,0 +1,15 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+  yui:
+  - panel
+  - gallery-treeview
+extends:
+  widget: standard/input/ProductCategoryInput
+  components:
+  - php
+  - view
+  - js
+  - css

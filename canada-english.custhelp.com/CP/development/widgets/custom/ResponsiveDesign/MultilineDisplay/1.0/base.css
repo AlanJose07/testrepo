@@ -1,0 +1,18 @@
+/**
+ * base.css: Base CSS for MultilineDisplay
+ */
+.rn_MultilineDisplay.rn_Multiline {
+
+}
+
+.rn_Multiline .rn_Element1 {
+    font-weight: bold;
+}
+
+.rn_Element1 a, .rn_Element2 a {
+    color: #333 !important;
+}
+
+h3 {
+display:none;
+}

@@ -1,0 +1,134 @@
+
+
+<!--
+<rn:block id='SelectionInput-preReadOnlyField'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-postReadOnlyField'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-top'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-preLabel'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-preRequired'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-postRequired'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-postLabel'>
+
+</rn:block>
+-->
+
+
+<rn:block id='SelectionInput-preInput'>
+<label for="rn_<?= $this->instanceID ?>_<?= $this->data['js']['name'] ?>" id="rn_<?= $this->instanceID ?>_LabelNew" class="rn_Label mat-label"><?= $this->data['attrs']['label_input'] ?> </label>
+</rn:block>   
+
+
+<!--
+<rn:block id='SelectionInput-inputTop'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-inputBottom'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-postInput'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-preHint'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-postHint'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-preRadioInput'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-postRadioInput'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-preRadioLabel'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-postRadioLabel'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='SelectionInput-bottom'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='FieldDisplay-top'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='FieldDisplay-label'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='FieldDisplay-value'>
+
+</rn:block>
+-->
+
+<!--
+<rn:block id='FieldDisplay-bottom'>
+
+</rn:block>
+-->
+

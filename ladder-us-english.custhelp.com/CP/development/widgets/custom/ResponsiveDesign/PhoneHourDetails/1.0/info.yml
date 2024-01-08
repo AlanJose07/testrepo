@@ -1,0 +1,13 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  interface:
+    name: interface
+    type: int
+    description: The attribute specify the interface that is US, CANADA or UK. Depending
+      on this value the call hours for the category will be displayed
+    default: ~
+    required: true

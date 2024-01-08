@@ -1,0 +1,21 @@
+/**
+ * base.css: Base CSS for AskTheCatSearchFilters
+ */
+.rn_AskTheCatSearchFilters {
+
+}
+
+div.atc-filters-widget {
+	width: 98%;
+	clear: both;
+	margin-top: 30px;
+}
+
+div.atc-filters-widget div.atc-filter-wrapper-outer {
+	overflow: hidden;
+}
+
+div.atc-filters-widget div.atc-filter-wrapper-outer div.atc-filter-wrapper-inner {
+	float: left;
+	margin-right: 30px;
+}
